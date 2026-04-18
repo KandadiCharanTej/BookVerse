@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookVerse - Discover Your Next Great Read</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===========================
+     NAVBAR / HEADER
+     =========================== -->
+<header>
+  <div class="navbar-custom container-fluid" style="max-width: 100%;">
+    <a href="index.html" class="brand">
+      📚 Book<span>Verse</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- ===========================
+     HERO SECTION
+     =========================== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Discover Your Next Great Read</h1>
+    <p>Explore thousands of books across all genres and connect with a community of passionate readers</p>
+    
+    <div class="cta-buttons">
+      <a href="books.html" class="btn btn-primary">Explore Books</a>
+      <a href="#featured" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CAROUSEL SECTION
+     =========================== -->
+<section class="carousel-section">
+  <div class="container">
+    <h2 class="text-center mb-4">Featured Content</h2>
+    
+    <div class="carousel-wrapper">
+      <!-- Carousel using Bootstrap -->
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carousel-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              📖 Bestselling Books of 2024
+              <div class="carousel-item-overlay">
+                <h3>Bestselling Books</h3>
+                <p>Discover the most loved books this year</p>
+                <a href="books.html" class="btn btn-primary btn-sm">Explore</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="carousel-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+              ✨ New Releases This Month
+              <div class="carousel-item-overlay">
+                <h3>New Releases</h3>
+                <p>Check out the latest books added to our collection</p>
+                <a href="books.html" class="btn btn-primary btn-sm">Browse</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="carousel-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+              🏆 Award Winners
+              <div class="carousel-item-overlay">
+                <h3>Award-Winning Books</h3>
+                <p>Explore books that won prestigious awards</p>
+                <a href="books.html" class="btn btn-primary btn-sm">Discover</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="carousel-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+              💬 Reader Favorites
+              <div class="carousel-item-overlay">
+                <h3>Community Favorites</h3>
+                <p>Most loved books according to our community</p>
+                <a href="books.html" class="btn btn-primary btn-sm">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     FEATURED BOOKS
+     =========================== -->
+<section class="section" id="featured">
+  <div class="container">
+    <div class="section-title">
+      <h2>Featured Books</h2>
+      <p style="color: var(--text-light); margin-top: 0.5rem;">Handpicked selections for every reader</p>
+    </div>
+    
+    <div class="book-grid">
+      <!-- Book 1 -->
+      <div class="book-card" data-category="fiction">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Midnight Library</div>
+          <div class="book-card-author">Matt Haig</div>
+          <div class="book-rating">⭐⭐⭐⭐⭐ (4.8)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 2 -->
+      <div class="book-card" data-category="tech">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">Atomic Habits</div>
+          <div class="book-card-author">James Clear</div>
+          <div class="book-rating">⭐⭐⭐⭐⭐ (4.9)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 3 -->
+      <div class="book-card" data-category="fiction">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">Dune</div>
+          <div class="book-card-author">Frank Herbert</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.7)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 4 -->
+      <div class="book-card" data-category="selfhelp">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">The 7 Habits</div>
+          <div class="book-card-author">Stephen Covey</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.6)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 5 -->
+      <div class="book-card" data-category="business">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">Lean Startup</div>
+          <div class="book-card-author">Eric Ries</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.5)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 6 -->
+      <div class="book-card" data-category="fiction">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">The Great Gatsby</div>
+          <div class="book-card-author">F. Scott Fitzgerald</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.6)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 7 -->
+      <div class="book-card" data-category="tech">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">Deep Learning</div>
+          <div class="book-card-author">Goodfellow & Bengio</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.4)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Book 8 -->
+      <div class="book-card" data-category="selfhelp">
+        <div class="book-card-image"></div>
+        <div class="book-card-body">
+          <div class="book-card-title">Mindset</div>
+          <div class="book-card-author">Carol Dweck</div>
+          <div class="book-rating">⭐⭐⭐⭐ (4.7)</div>
+          <div class="book-card-footer">
+            <a href="book-details.html">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="books.html" class="btn btn-primary">View All Books</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CATEGORIES
+     =========================== -->
+<section class="section" style="background: var(--light-bg);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Browse by Category</h2>
+    </div>
+    
+    <div class="categories-grid">
+      <a href="categories.html#fiction" class="category-card">
+        <h3>📖 Fiction</h3>
+        <p>Novels & Stories</p>
+      </a>
+      
+      <a href="categories.html#tech" class="category-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        <h3>💻 Technology</h3>
+        <p>Programming & AI</p>
+      </a>
+      
+      <a href="categories.html#business" class="category-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+        <h3>💼 Business</h3>
+        <p>Entrepreneurship</p>
+      </a>
+      
+      <a href="categories.html#selfhelp" class="category-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+        <h3>🌟 Self-Help</h3>
+        <p>Personal Growth</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     STATS SECTION
+     =========================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>By The Numbers</h2>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Books Available</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-number">100K+</div>
+        <div class="stat-label">Active Readers</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-number">25K+</div>
+        <div class="stat-label">User Reviews</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Genres</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     TESTIMONIALS
+     =========================== -->
+<section class="section" style="background: var(--light-bg);">
+  <div class="container">
+    <div class="section-title">
+      <h2>What Readers Say</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"BookVerse helped me discover amazing books I would have never found otherwise. The interface is smooth and the selection is incredible!"</p>
+        <div class="testimonial-author">Sarah Johnson</div>
+        <div class="testimonial-role">Book Enthusiast</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I love how easy it is to navigate through different categories and find exactly what I'm looking for. Highly recommended!"</p>
+        <div class="testimonial-author">Mike Chen</div>
+        <div class="testimonial-role">Avid Reader</div>
+      </div>
+      
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The book details page is fantastic with reviews and recommendations. This is my go-to platform for finding new reads!"</p>
+        <div class="testimonial-author">Emma Davis</div>
+        <div class="testimonial-role">Literature Lover</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     NEWSLETTER
+     =========================== -->
+<section class="newsletter">
+  <div class="container">
+    <h2>Stay Updated</h2>
+    <p>Get the latest book recommendations delivered to your inbox every week</p>
+    
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===========================
+     FOOTER
+     =========================== -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About BookVerse</h3>
+        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">Your gateway to discovering incredible books and connecting with fellow readers worldwide.</p>
+        <div class="social-links">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="books.html">Browse Books</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <a href="categories.html#fiction">Fiction</a>
+        <a href="categories.html#tech">Technology</a>
+        <a href="categories.html#business">Business</a>
+        <a href="categories.html#selfhelp">Self-Help</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <a href="#">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 BookVerse. All rights reserved. Made with 📚 for book lovers.</p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

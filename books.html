@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books - BookVerse</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Filter system styles */
+    .filter-wrapper {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+
+    .filter-option {
+      position: relative;
+    }
+
+    .filter-input {
+      display: none;
+    }
+
+    .filter-input + label {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: white;
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    body.dark-mode .filter-input + label {
+      background: #2a2a2a;
+      border-color: #444;
+      color: var(--text-dark);
+    }
+
+    .filter-input + label:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .filter-input:checked + label {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* Show all books by default */
+    .book-card {
+      display: block;
+    }
+
+    /* Hide books based on filter */
+    #filter-fiction:checked ~ .filter-wrapper ~ .book-grid .book-card:not([data-category="fiction"]),
+    #filter-tech:checked ~ .filter-wrapper ~ .book-grid .book-card:not([data-category="tech"]),
+    #filter-business:checked ~ .filter-wrapper ~ .book-grid .book-card:not([data-category="business"]),
+    #filter-selfhelp:checked ~ .filter-wrapper ~ .book-grid .book-card:not([data-category="selfhelp"]) {
+      display: none;
+    }
+
+    /* Search bar styling */
+    .search-bar {
+      display: flex;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .search-bar input {
+      background: #2a2a2a;
+      border-color: #444;
+      color: var(--text-dark);
+    }
+
+    .search-bar input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    }
+
+    .search-bar button {
+      padding: 12px 30px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, var(--text-dark) 0%, #34495e 100%);
+      color: white;
+      padding: 60px 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===========================
+     NAVBAR / HEADER
+     =========================== -->
+<header>
+  <div class="navbar-custom container-fluid" style="max-width: 100%;">
+    <a href="index.html" class="brand">
+      📚 Book<span>Verse</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- ===========================
+     PAGE HEADER
+     =========================== -->
+<section class="page-header">
+  <h1>Browse Our Library</h1>
+  <p>Discover thousands of books across all genres and find your next favorite read</p>
+</section>
+
+<!-- ===========================
+     SEARCH & FILTER
+     =========================== -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search by title or author...">
+  <button type="button">Search</button>
+</div>
+
+<!-- ===========================
+     FILTER SECTION (CSS ONLY)
+     =========================== -->
+<div style="max-width: 100%; margin-bottom: 3rem;">
+  
+  <!-- Hidden radio inputs for CSS filtering -->
+  <div class="filter-wrapper">
+    <input type="radio" id="filter-all" name="category" class="filter-input" checked>
+    <label for="filter-all">All Categories</label>
+    
+    <input type="radio" id="filter-fiction" name="category" class="filter-input">
+    <label for="filter-fiction">📖 Fiction</label>
+    
+    <input type="radio" id="filter-tech" name="category" class="filter-input">
+    <label for="filter-tech">💻 Technology</label>
+    
+    <input type="radio" id="filter-business" name="category" class="filter-input">
+    <label for="filter-business">💼 Business</label>
+    
+    <input type="radio" id="filter-selfhelp" name="category" class="filter-input">
+    <label for="filter-selfhelp">🌟 Self-Help</label>
+  </div>
+  
+  <!-- Book grid -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="book-grid">
+        
+        <!-- FICTION BOOKS -->
+        <div class="book-card" data-category="fiction">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Midnight Library</div>
+            <div class="book-card-author">Matt Haig</div>
+            <div class="book-rating">⭐⭐⭐⭐⭐ (4.8)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="fiction">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Dune</div>
+            <div class="book-card-author">Frank Herbert</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.7)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="fiction">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">The Great Gatsby</div>
+            <div class="book-card-author">F. Scott Fitzgerald</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.6)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="fiction">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">1984</div>
+            <div class="book-card-author">George Orwell</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.8)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- TECH BOOKS -->
+        <div class="book-card" data-category="tech">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Atomic Habits</div>
+            <div class="book-card-author">James Clear</div>
+            <div class="book-rating">⭐⭐⭐⭐⭐ (4.9)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="tech">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Deep Learning</div>
+            <div class="book-card-author">Goodfellow & Bengio</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.4)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="tech">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Clean Code</div>
+            <div class="book-card-author">Robert C. Martin</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.7)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="tech">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Crash Course Python</div>
+            <div class="book-card-author">Paul Craven</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.5)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- BUSINESS BOOKS -->
+        <div class="book-card" data-category="business">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Lean Startup</div>
+            <div class="book-card-author">Eric Ries</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.5)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="business">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Good to Great</div>
+            <div class="book-card-author">Jim Collins</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.6)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="business">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Zero to One</div>
+            <div class="book-card-author">Peter Thiel</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.4)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="business">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">The E-Myth</div>
+            <div class="book-card-author">Michael Gerber</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.3)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SELF-HELP BOOKS -->
+        <div class="book-card" data-category="selfhelp">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">The 7 Habits</div>
+            <div class="book-card-author">Stephen Covey</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.6)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="selfhelp">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Mindset</div>
+            <div class="book-card-author">Carol Dweck</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.7)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="selfhelp">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">Emotional Intelligence</div>
+            <div class="book-card-author">Daniel Goleman</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.5)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="book-card" data-category="selfhelp">
+          <div class="book-card-image"></div>
+          <div class="book-card-body">
+            <div class="book-card-title">How to Win Friends</div>
+            <div class="book-card-author">Dale Carnegie</div>
+            <div class="book-rating">⭐⭐⭐⭐ (4.8)</div>
+            <div class="book-card-footer">
+              <a href="book-details.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+</div>
+
+<!-- ===========================
+     FOOTER
+     =========================== -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About BookVerse</h3>
+        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">Your gateway to discovering incredible books.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="categories.html">Categories</a>
+        <a href="about.html">About</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <a href="#fiction">Fiction</a>
+        <a href="#tech">Technology</a>
+        <a href="#business">Business</a>
+        <a href="#selfhelp">Self-Help</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <a href="#">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 BookVerse. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

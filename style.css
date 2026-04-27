@@ -16,14 +16,7 @@
   --transition: all 0.3s ease;
 }
 
-/* Dark mode */
-body.dark-mode {
-  --light-bg: #1a1a1a;
-  --text-dark: #ecf0f1;
-  --text-light: #bdc3c7;
-  --border-color: #34495e;
-  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Reset */
 * {
@@ -146,22 +139,7 @@ header {
   color: var(--primary-color);
 }
 
-/* Dark mode toggle */
-.theme-toggle {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: var(--transition);
-}
 
-.theme-toggle:hover {
-  background: white;
-  color: var(--text-dark);
-}
 
 /* Mobile menu toggle */
 .menu-toggle {
@@ -407,9 +385,7 @@ header {
   border: 1px solid var(--border-color);
 }
 
-body.dark-mode .book-card {
-  background: #2a2a2a;
-}
+
 
 .book-card:hover {
   transform: translateY(-10px) scale(1.02);
@@ -516,10 +492,7 @@ body.dark-mode .book-card {
   user-select: none;
 }
 
-body.dark-mode .filter-label {
-  background: #2a2a2a;
-  border-color: #444;
-}
+
 
 .filter-label:hover {
   border-color: var(--primary-color);
@@ -648,9 +621,7 @@ body.dark-mode .filter-label {
   border-left: 5px solid var(--primary-color);
 }
 
-body.dark-mode .stat-card {
-  background: #2a2a2a;
-}
+
 
 .stat-number {
   font-size: 2.5rem;
@@ -687,9 +658,7 @@ body.dark-mode .stat-card {
   transition: var(--transition);
 }
 
-body.dark-mode .testimonial-card {
-  background: #2a2a2a;
-}
+
 
 .testimonial-card:hover {
   transform: translateY(-5px);
@@ -947,9 +916,7 @@ footer {
   border-left: 4px solid var(--primary-color);
 }
 
-body.dark-mode .review-card {
-  background: #2a2a2a;
-}
+
 
 .review-header {
   display: flex;
@@ -1024,12 +991,7 @@ body.dark-mode .review-card {
   transition: var(--transition);
 }
 
-body.dark-mode .form-group input,
-body.dark-mode .form-group textarea {
-  background: #2a2a2a;
-  border-color: #444;
-  color: var(--text-dark);
-}
+
 
 .form-group input:focus,
 .form-group textarea:focus {

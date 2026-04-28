@@ -60,12 +60,12 @@
     
     <div class="carousel-wrapper">
       <!-- Carousel using Bootstrap -->
-      <div id="carouselExample" class="carousel slide">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="carousel-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="carousel-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
               📖 Bestselling Books of 2024
-              <div class="carousel-item-overlay">
+              <div class="carousel-overlay">
                 <h3>Bestselling Books</h3>
                 <p>Discover the most loved books this year</p>
                 <a href="books.html" class="btn btn-primary btn-sm">Explore</a>
@@ -74,9 +74,9 @@
           </div>
           
           <div class="carousel-item">
-            <div class="carousel-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="carousel-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
               ✨ New Releases This Month
-              <div class="carousel-item-overlay">
+              <div class="carousel-overlay">
                 <h3>New Releases</h3>
                 <p>Check out the latest books added to our collection</p>
                 <a href="books.html" class="btn btn-primary btn-sm">Browse</a>
@@ -85,9 +85,9 @@
           </div>
           
           <div class="carousel-item">
-            <div class="carousel-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div class="carousel-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
               🏆 Award Winners
-              <div class="carousel-item-overlay">
+              <div class="carousel-overlay">
                 <h3>Award-Winning Books</h3>
                 <p>Explore books that won prestigious awards</p>
                 <a href="books.html" class="btn btn-primary btn-sm">Discover</a>
@@ -96,9 +96,9 @@
           </div>
           
           <div class="carousel-item">
-            <div class="carousel-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            <div class="carousel-box" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
               💬 Reader Favorites
-              <div class="carousel-item-overlay">
+              <div class="carousel-overlay">
                 <h3>Community Favorites</h3>
                 <p>Most loved books according to our community</p>
                 <a href="books.html" class="btn btn-primary btn-sm">View</a>
@@ -106,6 +106,15 @@
             </div>
           </div>
         </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
         
       </div>
     </div>
@@ -396,5 +405,6 @@
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
